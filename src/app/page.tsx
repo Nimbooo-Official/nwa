@@ -1,6 +1,6 @@
 import { ThemeColorToggle } from "@/components/theme-color-toggle";
 import { ThemeModeToggle } from "@/components/theme-mode-toggle";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Home() {
   return (

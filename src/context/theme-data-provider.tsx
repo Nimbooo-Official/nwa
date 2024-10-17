@@ -13,7 +13,8 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
     try {
       return (localStorage.getItem("themeColor") as ThemeColors) || "Zinc";
     } catch (error) {
-      "Zinc" as ThemeColors;
+      // "Zinc" as ThemeColors;
+      console.log(error);
     }
   };
 
