@@ -1,3 +1,19 @@
+## Kaushal
+
+Follow Next.js documentation on project structure
+Create all necessary routes for website
+Website - landing, [legal] TnC PP CoC, [Blogs] about, contact
+Fonts - Noto Sans, Poppins
+Sign In - update profile
+
+## Milind
+
+SEO - Metadata, Google Tag, Analytics
+Landing page content - ppt
+create vvpa - demo
+IPG - techcall for iframe integration
+IPG - InstaCollect QR scan, Collect Request and AutoDebit
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
