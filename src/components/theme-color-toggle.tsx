@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useThemeContext } from "@/context/theme-data-provider";
+import { ThemeColors } from "@/types/theme-types";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 

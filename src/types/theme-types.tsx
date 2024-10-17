@@ -1,5 +1,6 @@
-type ThemeColors = "Zinc" | "Rose" | "Blue" | "Green" | "Orange";
-interface ThemeColorStateParams {
+export type ThemeColors = "Zinc" | "Rose" | "Blue" | "Green" | "Orange";
+
+export interface ThemeColorStateParams {
   themeColor: ThemeColors;
   setThemeColor: React.Dispatch<React.SetStateAction<ThemeColors>>;
 }
