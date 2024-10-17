@@ -1,37 +1,38 @@
 "use client";
+
 import setGlobalColorTheme from "@/lib/theme-colors";
 import { useTheme } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { ThemeColorStateParams, ThemeColors } from "@/types/theme-types"; // Import the correct types
 
-const ThemeContext = createContext<ThemeColorStateParams>(
-  {} as ThemeColorStateParams,
-);
+// Create context with ThemeColorStateParams
+const ThemeContext = createContext<ThemeColorStateParams | undefined>(undefined);
 
 export default function ThemeDataProvider({ children }: ThemeProviderProps) {
-  const getSavedThemeColor = () => {
+  const getSavedThemeColor = (): ThemeColors => {
     try {
       return (localStorage.getItem("themeColor") as ThemeColors) || "Zinc";
     } catch (error) {
-      // "Zinc" as ThemeColors;
       console.log(error);
+      return "Zinc"; // Default to Zinc if there's an error
     }
   };
 
-  const [themeColor, setThemeColor] = useState<ThemeColors>(
-    getSavedThemeColor() as ThemeColors,
-  );
+  const [themeColor, setThemeColor] = useState<ThemeColors>(getSavedThemeColor());
   const [isMounted, setIsMounted] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
-    localStorage.setItem("themeColor", themeColor);
-    setGlobalColorTheme(theme as "light" | "dark", themeColor);
+    setIsMounted(true);
+  }, []);
 
-    if (!isMounted) {
-      setIsMounted(true);
+  useEffect(() => {
+    if (isMounted) {
+      localStorage.setItem("themeColor", themeColor);
+      setGlobalColorTheme(theme as "light" | "dark", themeColor);
     }
-  }, [themeColor, theme]);
+  }, [themeColor, theme, isMounted]);
 
   if (!isMounted) {
     return null;
@@ -45,5 +46,9 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
 }
 
 export function useThemeContext() {
-  return useContext(ThemeContext);
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useThemeContext must be used within a ThemeDataProvider");
+  }
+  return context;
 }

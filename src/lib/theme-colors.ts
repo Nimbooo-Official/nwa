@@ -226,15 +226,15 @@ const themes = {
   },
 };
 
+import { ThemeColors } from "@/types/theme-types"; // Adjust path as necessary
+
 export default function setGlobalColorTheme(
   themeMode: "light" | "dark",
-  color: ThemeColors,
+  color: ThemeColors
 ) {
-  const theme = themes[color][themeMode] as {
-    [key: string]: string;
-  };
+  const theme = themes[color][themeMode] as { [key: string]: string };
 
-  for (const key in theme) {
+  Object.keys(theme).forEach((key) => {
     document.documentElement.style.setProperty(`--${key}`, theme[key]);
-  }
+  });
 }
