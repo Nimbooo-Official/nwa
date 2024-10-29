@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useThemeContext } from "@/context/theme-data-provider";
-import { ThemeColors } from "@/types/theme-types";
+import type { ThemeColors } from "@/types/theme-types";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -28,16 +28,17 @@ export function ThemeColorToggle() {
   const createSelectItems = () => {
     return availableThemeColors.map(({ name, light, dark }) => (
       <SelectItem key={name} value={name}>
-        <div className="flex item-center space-x-3">
+        <div className="flex item-center space-x-2">
           <div
             className={cn(
               "rounded-full",
-              "w-[20px]",
-              "h-[20px]",
+              "w-[24px]",
+              "h-[24px]",
               theme === "light" ? light : dark,
             )}
-          ></div>
-          <div className="text-sm">{name}</div>
+          />
+          {/* disabled color name display to save space */}
+          <div className="text-base">{name}</div>
         </div>
       </SelectItem>
     ));
