@@ -90,9 +90,9 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="h-screen flex bg-[rgba(49,200,0,255)]">
-            {/* Left section with image and message */}
-            <div className="w-1/2 relative overflow-hidden">
+        <div className="flex flex-col md:flex-row bg-background md:bg-[rgba(49,200,0,255)] h-screen">
+            {/* Left section with image and message, hidden on small screens */}
+            <div className="w-full md:w-1/2 hidden md:block relative overflow-hidden">
                 <div className="flex justify-center items-center mt-6">
                     <Image
                         src='/images/Nimbooo_Lime.png'
@@ -110,11 +110,26 @@ const LoginForm = () => {
             </div>
 
             {/* Right section with form */}
-            <div className="w-1/2 bg-background p-16 flex flex-col justify-center rounded-s-3xl relative">
+           {/* Right section with form */}
+           <div className="w-full md:w-1/2 bg-background p-8 md:p-16 flex flex-col justify-center rounded-s-3xl relative">
+                {/* Logo on top for small screens */}
+                <div className="flex justify-center md:hidden mb-4">
+                    <Image
+                        src='/images/Nimbooo_Lime.png'
+                        alt='Nimboo'
+                        height={100}
+                        width={100}
+                        className='rounded-full'
+                    />
+                    
+                </div>
                 <div className="absolute top-4 right-4">
                     <Link href="/" className="text-primary">
                         Back to Home
                     </Link>
+                </div>
+                <div className="flex justify-center md:hidden mb-4">
+                <h1 className="text-4xl font-bold text-primary">Welcome to Nimboo</h1>
                 </div>
                 
                 <div className="rounded-xl border p-10">
