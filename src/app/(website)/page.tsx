@@ -3,11 +3,13 @@ import { Features } from "./Features";
 import { How } from "./How";
 import { Why } from "./Why";
 import { Testimonials } from "./Testimonials";
-import { Footer } from "./Footer";
+import  Footer  from "./Footer";
+import Header from "./Header";
 
 export default function Home() {
   return (
     <>
+      <Header/>
       <Hero />
       <Features />
       <How />
