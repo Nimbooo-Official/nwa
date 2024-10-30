@@ -19,7 +19,7 @@ const PreferencesSchema = new Schema<Preferences>({
 interface IUser extends Document {
   firstName: string;
   lastName: string;
-  dateOfBerth:Date
+  dob:Date
   email: string;
   mobileNo: string;
   pincode: string;
@@ -31,10 +31,10 @@ interface IUser extends Document {
   bio:string;
   avtarurl:string;
   coverurl:string;
-  instagramLink:string
-  twiterurl:string
+  instagramUrl:string
+  twitterUrl:string
   facebookLink:string
-  youtubeurl:string
+  youtubeUrl:string
   isVerified: boolean;
   posts: Schema.Types.ObjectId[];
   donations: Schema.Types.ObjectId[];
@@ -49,19 +49,25 @@ const UserSchema = new Schema<IUser>({
   mobileNo:{ type: String , required: true,unique: true },
   email: { type: String },
   password: { type: String , required: true },
-  dateOfBerth: { type: Date},
+  dob: { type: Date},
+  username: { type: String,},
+  bio:{ type: String,},
+  twitterUrl:{ type: String },
+  youtubeUrl:{ type: String },
+  instagramUrl:{ type: String,},
+
   pincode: { type: String },
   creatorCategory: { type: String },
   otp: { type: String,},
   role: { type: String, enum: ['admin', 'creator', 'user'], default: 'user' },
-  username: { type: String,},
-  bio:{ type: String,},
+ 
+  
   avtarurl:{ type: String,},
   coverurl:{ type: String,},
-  instagramLink:{ type: String,},
-  twiterurl:{ type: String },
+  
+  
   facebookLink:{ type: String },
-  youtubeurl:{ type: String },
+ 
   isVerified: { type: Boolean, default: false },
   posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   donations: [{ type: Schema.Types.ObjectId, ref: 'Donation' }],

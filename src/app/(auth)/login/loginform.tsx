@@ -22,10 +22,10 @@ const LoginForm = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('/api/sendotp', {
+            const response = await fetch('/api/auth/sendotp', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ mobileno: `91${mobileNumber}` }),
+                body: JSON.stringify({ mobileNo: `91${mobileNumber}` }),
             });
 
             const data = await response.json();
@@ -69,15 +69,17 @@ const LoginForm = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ mobileno: `91${mobileno}`, otp }),
+                body: JSON.stringify({ mobileNo: `91${mobileno}`, otp }),
             });
 
             const result = await response.json();
             if (result.success) {
-                router.push(result.role === 'creator' ? '/creator' : '/user');
+                if(result.role === 'creator'){
+                    router.push(`/${result.username}/dashboard`)
+                }
             } else {
                 setError(result.message || 'Login failed');
             }

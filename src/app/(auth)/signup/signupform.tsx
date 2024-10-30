@@ -44,7 +44,11 @@ const SignupForm = () => {
 
             const result = await response.json();
             if (result.success) {
-                router.push('/login');
+                if (result.token) {
+                    localStorage.setItem('authToken', result.token);
+                    router.push('/profiledetails');
+                }
+               
             } else {
                 setErrors({ apiError: result.message || 'Sign up failed' });
             }
