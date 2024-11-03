@@ -1,16 +1,10 @@
+// import ProfileInfoForm from "@/components/profilesection/profileinfoform";
 
-
-
-
-import ProfileInfoForm from "@/components/profilesection/profileinfoform";
-
-export default  function ProfileDetails() {
-
+export default function ProfileDetails() {
   return (
-    <div >
+    <div>
       {/* Avatar Section */}
-      <ProfileInfoForm/>
-      
+      {/* <ProfileInfoForm/> */}
     </div>
   );
 }

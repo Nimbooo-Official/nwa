@@ -1,19 +1,21 @@
+import { Navbar } from "./Navbar";
 import { Hero } from "./Hero";
 import { Features } from "./Features";
-import { How } from "./How";
-import { Why } from "./Why";
+// import { How } from "./How";
+import { Faq } from "./Faq";
 import { Testimonials } from "./Testimonials";
-import  Footer  from "./Footer";
-import Header from "./Header";
+import { Footer } from "./Footer";
+import { Stats } from "./Stats";
 
 export default function Home() {
   return (
     <>
-      <Header/>
+      <Navbar />
       <Hero />
+      <Stats />
       <Features />
-      <How />
-      <Why />
+      {/* <How /> */}
+      <Faq />
       <Testimonials />
       <Footer />
     </>
