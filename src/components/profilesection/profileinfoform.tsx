@@ -1,11 +1,8 @@
-
-  
-
-
-  "use client";
+"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import UploadButton from "./imageuploadbutton";
 import { saveProfile } from "@/app/api/profile/profiledetails";
 
@@ -21,12 +18,12 @@ export default function ProfileInfoForm() {
   const [usernameAvailable, setUsernameAvailable] = useState<boolean | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const router = useRouter();
-  const token = localStorage.getItem('authToken');
-  console.log("token  from from dta",token)
+
+  const token = typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
+
   if (!token) {
-    // If no token is found, redirect to login page
-    router.push('/login');
-    return;
+    router.push("/login");
+    return null;
   }
 
   const checkUsernameAvailability = async (username: string) => {
@@ -70,53 +67,58 @@ export default function ProfileInfoForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  async function handeleProfile(formData: FormData) {
-
-    const token = localStorage.getItem('authToken');
-    console.log("token  from from dta",token)
+  const handleProfile = async (formData: FormData) => {
     if (!token) {
-      // If no token is found, redirect to login page
-      router.push('/login');
+      router.push("/login");
       return;
     }
-    console.log("token",token)
-    console.log("formdata",formData)
-    const result = await saveProfile(formData,token)
-    console.log(result)
+
+    const result = await saveProfile(formData, token);
     if (result === true) {
-        router.push('/bankdetails') // Update path here
-      }
-  }
+      router.push("/bankdetails");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateForm()) {
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("dob", dob);
+      formData.append("bio", bio);
+      formData.append("twitterUrl", twitterUrl);
+      formData.append("youtubeUrl", youtubeUrl);
+      formData.append("instagramUrl", instagramUrl);
+      if (avatarUrl) formData.append("avatarUrl", avatarUrl);
+      if (coverUrl) formData.append("coverUrl", coverUrl);
+      await handleProfile(formData);
+    }
+  };
 
   return (
-    <form
-      action={handeleProfile}
-      className="flex flex-col max-w-4xl mx-auto mt-10 space-y-6"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col max-w-4xl mx-auto mt-10 space-y-6">
       {/* Cover Image */}
       <div className="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden">
         {coverUrl && (
-          <img src={coverUrl} alt="Cover Image" className="object-cover w-full h-full" />
+          <Image src={coverUrl} alt="Cover Image" layout="fill" objectFit="cover" />
         )}
         <div className="absolute top-4 right-4">
           <UploadButton onUplodeComplete={setCoverUrl} />
-          <input type="hidden" name="coverurl" value={coverUrl || ""} />
+          <input type="hidden" name="coverUrl" value={coverUrl || ""} />
         </div>
       </div>
 
       {/* Avatar Image */}
       <div className="relative -mt-16 flex justify-center">
-        <div className="relative">
-          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
-            {avatarUrl ? (
-              <img src={avatarUrl} alt="Avatar" className="object-cover w-full h-full" />
-            ) : (
-              <div className="w-full h-full bg-gray-200"></div>
-            )}
-          </div>
+        <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+          {avatarUrl ? (
+            <Image src={avatarUrl} alt="Avatar" layout="fill" objectFit="cover" />
+          ) : (
+            <div className="w-full h-full bg-gray-200"></div>
+          )}
           <div className="absolute bottom-0 right-0">
             <UploadButton onUplodeComplete={setAvatarUrl} />
-            <input type="hidden" name="avtarurl" value={avatarUrl || ""} />
+            <input type="hidden" name="avatarUrl" value={avatarUrl || ""} />
           </div>
         </div>
       </div>
@@ -178,10 +180,7 @@ export default function ProfileInfoForm() {
         {/* Social Links */}
         {["twitterUrl", "youtubeUrl", "instagramUrl"].map((social, index) => (
           <div key={index} className="p-4">
-            <label
-              htmlFor={social}
-              className="block text-sm font-semibold mb-1"
-            >
+            <label htmlFor={social} className="block text-sm font-semibold mb-1">
               {social.charAt(0).toUpperCase() + social.slice(1, -3)} Link
             </label>
             <input
@@ -190,7 +189,9 @@ export default function ProfileInfoForm() {
               value={social === "twitterUrl" ? twitterUrl : social === "youtubeUrl" ? youtubeUrl : instagramUrl}
               onChange={(e) => {
                 const value = e.target.value;
-                social === "twitterUrl" ? setTwitterUrl(value) : social === "youtubeUrl" ? setYoutubeUrl(value) : setInstagramUrl(value);
+                if (social === "twitterUrl") setTwitterUrl(value);
+                else if (social === "youtubeUrl") setYoutubeUrl(value);
+                else setInstagramUrl(value);
               }}
               placeholder={`Your ${social.charAt(0).toUpperCase() + social.slice(1, -3)} profile link`}
               className="border-2 border-black p-2 w-full rounded-lg"
@@ -200,9 +201,7 @@ export default function ProfileInfoForm() {
 
         {/* Submit Button */}
         <div className="p-4 flex justify-center">
-          <button
-            className="px-6 py-2 bg-yellow-400 rounded-xl border-2 border-black hover:bg-yellow-500"
-          >
+          <button className="px-6 py-2 bg-yellow-400 rounded-xl border-2 border-black hover:bg-yellow-500">
             NEXT
           </button>
         </div>

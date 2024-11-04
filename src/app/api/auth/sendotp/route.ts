@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import User from "@/models/User";
-// import axios from 'axios'; // For sending SMS via API
+import { dbConnect } from '@/lib/dbConnect';
 
 // Function to generate a 6-digit OTP
 function generateOTP(length = 6) {
@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
     if (!mobileNo) {
       return NextResponse.json({ success: false, message: 'Mobile number is required' }, { status: 400 });
     }
+    await dbConnect()
 
     let otp;
 
