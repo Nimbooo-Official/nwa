@@ -26,7 +26,7 @@ export const Testimonials = () => {
               />
               <use x={86} href="#b56e9dab-6ccb-4d32-ad02-6b4bb5d9bbeb" />
             </svg> */}
-            <blockquote className="text-base/7 font-semibold text-primary sm:text-2xl/9">
+            <blockquote className="text-base/7 text-primary sm:text-2xl/9">
               <p>
                 Commodo amet fugiat excepteur sunt qui ea elit cupidatat ullamco
                 consectetur ipsum elit consequat. Elit sunt proident ea nulla ad

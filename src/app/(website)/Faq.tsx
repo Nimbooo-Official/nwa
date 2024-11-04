@@ -37,8 +37,8 @@ export const Faq = () => {
                 Can I access my supporters list ?
               </AccordionTrigger>
               <AccordionContent className="mt-2 text-base/7 text-gray-500">
-                Yes. It`&apos;`s accessible to you by default, but you can
-                disable it if you prefer.
+                Yes. It&apos;s accessible to you by default, but you can disable
+                it if you prefer.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

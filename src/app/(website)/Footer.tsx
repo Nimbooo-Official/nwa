@@ -115,7 +115,7 @@ export const Footer = () => {
               className="w-60"
             />
             <p className="text-primary text-balance max-md:text-center">
-              India`&apos;`s favourite Micro & Nano payments QR based solution
+              India&apos;s favourite Micro & Nano payments QR based solution
               platform.
             </p>
             <div className="flex gap-x-6">

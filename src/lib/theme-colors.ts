@@ -94,7 +94,7 @@ const themes = {
   Green: {
     light: {
       // background: "0 0% 100%",
-      background: "140 50% 93%", //pale green
+      background: "140 50% 95%", //pale green
       foreground: "240 10% 3.9%", //black
       card: "0 0% 100%", //white
       cardForeground: "240 10% 3.9%", //black
