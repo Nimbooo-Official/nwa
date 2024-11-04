@@ -106,7 +106,9 @@ const LoginForm = () => {
                 </div>
                 <div className="relative z-10 p-10 text-white">
                     <h1 className="text-4xl font-bold">Welcome to Nimboo</h1>
-                    <p className="mt-2 text-xl">Your personalized message here</p>
+                    <p className="mt-2 text-xl">Nimbooo&#169; is an Micro & Nano Payments Collection platform that
+            enables creators, contributors and publishers to generate QR based
+            payment links</p>
                 </div>
                 <CardComponent />
             </div>
@@ -131,7 +133,7 @@ const LoginForm = () => {
                     </Link>
                 </div>
                 <div className="flex justify-center md:hidden mb-4">
-                <h1 className="text-4xl font-bold text-primary">Welcome to Nimboo</h1>
+                <h1 className="text-2xl font-bold text-primary">Welcome to Nimboo</h1>
                 </div>
                 
                 <div className="rounded-xl border p-10">

@@ -1,4 +1,4 @@
-import { ThemeColors } from "@/types/theme-types";
+import type { ThemeColors } from "@/types/theme-types";
 
 const themes = {
   Orange: {
@@ -93,13 +93,14 @@ const themes = {
   },
   Green: {
     light: {
-      background: "0 0% 100%",
-      foreground: "240 10% 3.9%",
-      card: "0 0% 100%",
-      cardForeground: "240 10% 3.9%",
+      // background: "0 0% 100%",
+      background: "140 50% 93%", //pale green
+      foreground: "240 10% 3.9%", //black
+      card: "0 0% 100%", //white
+      cardForeground: "240 10% 3.9%", //black
       popover: "0 0% 100%",
       popoverForeground: "240 10% 3.9%",
-      primary: "142.1 76.2% 36.3%",
+      primary: "142 76% 36%",
       primaryForeground: "355.7 100% 97.3%",
       secondary: "240 4.8% 95.9%",
       secondaryForeground: "240 5.9% 10%",

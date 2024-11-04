@@ -6,27 +6,27 @@ const CardComponent = () => {
   const cards = [
     {
       image: '/images/Nimbooo_Lime.png',
-      header: 'Card One',
-      message: 'This is the message for card one. It can be longer or shorter based on the content.',
-      footer: 'Footer Info 1',
+      header: 'John Doe',
+      message: 'Thank you, John Doe, for your generous contribution! Your support is greatly appreciated.',
+      footer: 'Contributor since 2024',
     },
     {
       image: '/images/Nimbooo_Lime.png',
-      header: 'Card Two',
-      message: 'This is the message for card two. Customize this message as needed.',
-      footer: 'Footer Info 2',
+      header: 'Jane Smith',
+      message: 'We appreciate your dedication, Jane Smith! Your help enables us to keep growing.',
+      footer: 'Contributor since 2024',
     },
     {
       image: '/images/Nimbooo_Lime.png',
-      header: 'Card Three',
-      message: 'This is the message for card three. Add any content here.',
-      footer: 'Footer Info 3',
+      header: 'Alice Johnson',
+      message: 'Thank you for your commitment, Alice Johnson! Your backing makes a big difference.',
+      footer: 'Contributor since 2024',
     },
     {
       image: '/images/Nimbooo_Lime.png',
-      header: 'Card Four',
-      message: 'This is the message for card four. Add any content here.',
-      footer: 'Footer Info 4',
+      header: 'Robert Brown',
+      message: 'A big thank you to Robert Brown for believing in us! Your support means the world.',
+      footer: 'Contributor since 2024',
     },
   ];
 

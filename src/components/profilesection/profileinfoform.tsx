@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import UploadButton from "./imageuploadbutton";
 import { saveProfile } from "@/app/api/profile/profiledetails";
+import { Button } from "../ui/button";
 
 export default function ProfileInfoForm() {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -89,8 +90,8 @@ export default function ProfileInfoForm() {
       formData.append("twitterUrl", twitterUrl);
       formData.append("youtubeUrl", youtubeUrl);
       formData.append("instagramUrl", instagramUrl);
-      if (avatarUrl) formData.append("avatarUrl", avatarUrl);
-      if (coverUrl) formData.append("coverUrl", coverUrl);
+      if (avatarUrl) formData.append("avtarurl", avatarUrl);
+      if (coverUrl) formData.append("coverurl", coverUrl);
       await handleProfile(formData);
     }
   };
@@ -104,7 +105,7 @@ export default function ProfileInfoForm() {
         )}
         <div className="absolute top-4 right-4">
           <UploadButton onUplodeComplete={setCoverUrl} />
-          <input type="hidden" name="coverUrl" value={coverUrl || ""} />
+          <input type="hidden" name="coverurl" value={coverUrl || ""} />
         </div>
       </div>
 
@@ -118,7 +119,7 @@ export default function ProfileInfoForm() {
           )}
           <div className="absolute bottom-0 right-0">
             <UploadButton onUplodeComplete={setAvatarUrl} />
-            <input type="hidden" name="avatarUrl" value={avatarUrl || ""} />
+            <input type="hidden" name="avtarurl" value={avatarUrl || ""} />
           </div>
         </div>
       </div>
@@ -201,9 +202,9 @@ export default function ProfileInfoForm() {
 
         {/* Submit Button */}
         <div className="p-4 flex justify-center">
-          <button className="px-6 py-2 bg-yellow-400 rounded-xl border-2 border-black hover:bg-yellow-500">
+          <Button size="xl">
             NEXT
-          </button>
+          </Button>
         </div>
       </div>
     </form>

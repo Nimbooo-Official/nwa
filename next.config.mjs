@@ -15,6 +15,7 @@ const nextConfig = {
           hostname: 'api.dicebear.com', // Allow images from Dicebear
         },
       ],
+      domains: ['images.unsplash.com'],
       dangerouslyAllowSVG: true, // Allow SVGs
       contentSecurityPolicy: "default-src 'self'; img-src 'self' https://api.dicebear.com;", // Optional CSP to restrict sources
     },

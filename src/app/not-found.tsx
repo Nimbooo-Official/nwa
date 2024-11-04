@@ -1,6 +1,7 @@
 import error from "/public/images/error.png";
 import Image from "next/image";
 import Link from "next/link";
+import Nimbooo from "../../public/images/Nimbooo.png";
 const NotFound= () => {
   return(
     <>
@@ -9,7 +10,7 @@ const NotFound= () => {
       <div className="absolute top-4 left-4 ml-4">
         <Link href="/">
           <Image
-            src="/images/Nimbooo_Logo_Final_Lime_large.png"
+            src={Nimbooo}
             alt="Logo"
             width={200}
             height={200}

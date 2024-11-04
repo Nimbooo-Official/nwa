@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { dbConnect } from "@/lib/dbConnect";
 
 type Props = {
   params: {
@@ -21,6 +22,8 @@ interface Donator {
 export default async function profilepage({ params }: Props) {
   const username = params.creator;
   console.log(username)
+
+  await dbConnect()
 
   // Fetching user profile information from the database
   const profileinfo = await User.findOne({ username });

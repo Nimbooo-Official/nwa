@@ -75,13 +75,15 @@ const SignupForm = () => {
                 </div>
                 <div className="relative z-10 p-10 text-white">
                     <h1 className="text-4xl font-bold">Welcome to Nimboo</h1>
-                    <p className="mt-2 text-xl">Your personalized message here</p>
+                    <p className="mt-2 text-xl">Nimbooo&#169; is an Micro & Nano Payments Collection platform that
+            enables creators, contributors and publishers to generate QR based
+            payment links</p>
                 </div>
                 <CardComponent />
             </div>
 
             {/* Right section with form */}
-            <div className="w-full md:w-1/2 bg-background p-8 md:p-16 flex flex-col justify-center rounded-s-3xl relative">
+            <div className="w-full md:w-1/2 bg-background p-8 md:p-16 flex flex-col justify-center md:rounded-s-3xl relative">
                 {/* Logo on top for small screens */}
                 <div className="flex justify-center md:hidden mb-4">
                     <Image
@@ -100,7 +102,7 @@ const SignupForm = () => {
                     </Link>
                 </div>
                 <div className="flex justify-center md:hidden mb-4">
-                <h1 className="text-4xl font-bold text-primary">Welcome to Nimboo</h1>
+                <h1 className="text-2xl font-bold text-primary">Welcome to Nimboo</h1>
                 </div>
                 <div className="rounded-xl border p-6 md:p-10">
                     <h1 className="text-2xl text-primary mb-4">Create your account</h1>

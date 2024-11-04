@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 body {
-  /* font-family: var(--font-noto-sans); */
-  /* font-family: var(--font-geist-sans), var(--font-noto-sans), Arial, Helvetica,
-    sans-serif; */
+  font-family: var(--font-noto-sans), var(--font-geist-sans),
+    var(--font-geist-mono), var(--font-poppins), var(--font-poppinsThin),
+    var(--font-geist-sans), var(--font-cinzelDecorative), Arial, Helvetica,
+    sans-serif;
   max-width: 1924px;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: hidden;
 }
 .hexagon {
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
@@ -16,7 +18,7 @@ body {
 
 
 
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 1700px) {
   body {
     font-size: 20px;
   }

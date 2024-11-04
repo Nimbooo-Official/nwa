@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import err from "/public/images/error.png";
 import Image from "next/image";
 import Link from "next/link";
+import Nimbooo from "../../public/images/Nimbooo.png";
 
 export default function Error({
   error,
@@ -25,7 +26,7 @@ export default function Error({
       <div className="absolute top-4 left-4 ml-4">
         <Link href="/">
           <Image
-            src="/images/Nimbooo_Logo_Final_Lime_large.png"
+            src={Nimbooo}
             alt="Logo"
             width={200}
             height={200}

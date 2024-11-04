@@ -1,11 +1,103 @@
-import { ThemeColorToggle } from "@/components/theme-color-toggle";
-import { ThemeModeToggle } from "@/components/theme-mode-toggle";
+import { Star } from "lucide-react";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+// import { ThemeColorToggle } from "@/components/theme-color-toggle";
+// import { ThemeModeToggle } from "@/components/theme-mode-toggle";
+
 export const Hero = () => {
   return (
-    <>
-      <ThemeColorToggle />
-      <ThemeModeToggle />
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima distinctio, accusamus enim a excepturi recusandae, error repudiandae ullam praesentium officiis animi, quas sunt debitis deserunt non ad autem alias. Enim ex, inventore odio sint rerum ipsa reiciendis autem maxime quas, voluptate quo ratione maiores dolorem temporibus pariatur voluptatum beatae est sed? Quidem molestias amet nulla tempore voluptas modi! Quasi eos id nesciunt quam eius quae vero esse sequi assumenda iusto modi neque labore deserunt, similique rerum optio, nam quod! Provident qui nihil itaque excepturi in. Ipsum molestias sit, saepe mollitia accusantium vel eum fuga soluta deleniti nam? Saepe voluptatem corrupti labore quo minima vitae accusantium id ullam illum. Asperiores facilis tempore molestiae nam officia accusantium enim dolorem cum aperiam quia omnis, obcaecati recusandae doloremque soluta tempora consequuntur deserunt earum possimus ipsa distinctio nobis animi alias? Repellat nostrum repellendus dolorum! Ex eius officiis reiciendis quas. Necessitatibus quisquam doloremque quod odit obcaecati? Hic tempora esse quidem officia, doloremque provident harum corrupti iure libero magnam perspiciatis quam? Tenetur illum similique adipisci cum quas, numquam vero provident nobis dignissimos exercitationem, tempora aliquid fuga necessitatibus repellat, porro est soluta nulla magni accusantium veniam amet officia quisquam. Id voluptates dicta repellat, ratione odio accusantium eaque inventore?</p>
-    </>
+    <section className="py-8 sm:py-16">
+      <div className="flex items-center justify-center text-center flex-col gap-6">
+        <div className="font-[family-name:var(--font-cinzel-deco)] flex flex-col gap-2">
+          <h3 className="lg:text-lg pt-5 font-[family-name:var(--font-poppins)]">
+            Enable Followers to Support your Work
+          </h3>
+          <h1
+            className="text-5xl font-black md:text-8xl bg-gradient-to-r from-lime-700 via-cyan-700
+              to-teal-700 hover:from-indigo-700 hover:to-orange-700 inline-block
+              text-transparent bg-clip-text"
+          >
+            Monetise
+          </h1>
+          <p className="lg:text-lg font-[family-name:var(--font-poppins)]">
+            your
+          </p>
+          <h1
+            className="text-5xl font-black md:text-8xl bg-gradient-to-r from-lime-700 via-cyan-700
+              to-teal-700 hover:from-indigo-700 hover:to-orange-700 inline-block
+              text-transparent bg-clip-text"
+          >
+            Content
+          </h1>
+          <p className="lg:text-lg font-[family-name:var(--font-poppins)]">
+            on the Internet
+          </p>
+        </div>
+
+        <div className="p-6 lg:max-w-screen-md text-center flex flex-col gap-4">
+          <h3>
+            Nimbooo&#169; is an Micro & Nano Payments Collection platform that
+            enables creators, contributors and publishers to generate QR based
+            payment links
+          </h3>
+          <p className="lg:text-lg">
+            <b>Quick & Easy</b>
+          </p>
+        </div>
+
+        <div className="mx-auto flex w-fit flex-col items-center gap-4">
+          <Link href="/sihnup"><Button size="xl">Join Waitlist</Button></Link>
+          
+          <div>
+            <span className="mx-4 inline-flex items-center -space-x-4">
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-1.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-2.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-3.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-4.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+              <Avatar className="size-14 border">
+                <AvatarImage
+                  src="https://www.shadcnblocks.com/images/block/avatar-5.webp"
+                  alt="placeholder"
+                />
+              </Avatar>
+            </span>
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <Star className="size-5 fill-green-600 text-green-600" />
+              <Star className="size-5 fill-green-600 text-green-600" />
+              <Star className="size-5 fill-green-600 text-green-600" />
+              <Star className="size-5 fill-green-600 text-green-600" />
+              <Star className="size-5 fill-green-600 text-green-600" />
+              <span className="font-semibold">5.0</span>
+            </div>
+            <p className="text-left font-medium text-muted-foreground">
+              from 200+ reviews
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
