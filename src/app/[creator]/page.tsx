@@ -40,7 +40,7 @@ export default async function profilepage({ params }: Props) {
   // Fallback URL for avatar if not provided
   const avatarUrl = profileinfo.avtarurl || `https://robohash.org/default-avatar?size=200x200`;
   const coverurl = profileinfo.coverurl || `https://robohash.org/default-avatar?size=200x200`;
-  console.log(profileinfo)
+  console.log(profileinfo.virtualAccountId)
 
   return (
     <div className="mt-10 mb-96">
@@ -131,7 +131,8 @@ export default async function profilepage({ params }: Props) {
           </div>
 
           <div className="bg-slate-100 dark:bg-gray-900 rounded-xl p-6 shadow-md">
-            <DonationForm userId={profileinfo.id} />
+          <DonationForm userId={profileinfo.id} virtual={profileinfo.virtualAccountId} />
+
           </div>
         </div>
       </div>

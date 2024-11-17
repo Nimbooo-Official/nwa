@@ -52,10 +52,10 @@ const CardComponent = () => {
         {infiniteCards.map((card, index) => (
           <motion.div
             key={index}
-            className="flex flex-col lg:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-80 min-w-[320px]"
+            className="flex flex-col lg:flex-row bg-card shadow-lg rounded-lg overflow-hidden w-80 min-w-[320px]"
           >
             {/* Image Section */}
-            <div className="w-full lg:w-1/2 h-48">
+            <div className="w-full lg:w-1/2 h-48 ">
               <Image
                 src={card.image}
                 alt={card.header}
@@ -68,10 +68,10 @@ const CardComponent = () => {
             {/* Content Section */}
             <div className="w-full lg:w-1/2 p-4 flex flex-col justify-between">
               <div>
-                <h2 className="text-2xl font-bold mb-2">{card.header}</h2>
-                <p className="text-sm text-gray-600 mb-4">{card.message}</p>
+                <h2 className="text-2xl text-secondary-foreground font-bold mb-2">{card.header}</h2>
+                <p className="text-sm text-gray-500 mb-4">{card.message}</p>
               </div>
-              <div className="text-sm font-semibold text-gray-500">{card.footer}</div>
+              <div className="text-sm font-semibold text-secondary-foreground">{card.footer}</div>
             </div>
           </motion.div>
         ))}

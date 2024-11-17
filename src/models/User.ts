@@ -34,6 +34,7 @@ interface IUser extends Document {
   instagramUrl:string
   twitterUrl:string
   facebookLink:string
+  virtualAccountId:string
   youtubeUrl:string
   isVerified: boolean;
   posts: Schema.Types.ObjectId[];
@@ -60,7 +61,7 @@ const UserSchema = new Schema<IUser>({
   creatorCategory: { type: String },
   otp: { type: String,},
   role: { type: String, enum: ['admin', 'creator', 'user'], default: 'user' },
- 
+  virtualAccountId:{type:String},
   
   avtarurl:{ type: String,},
   coverurl:{ type: String,},

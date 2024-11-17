@@ -48,7 +48,7 @@ const Step1 = () => {
     // If valid, update form data and navigate
     if (valid) {
       updateFormData({ documentType, documentId, imageUrl });
-      router.push('/bankdetails/accountinfo');
+      router.push('  /bankdetails/accountinfo');
     }
   };
 

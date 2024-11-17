@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import CardComponent from '@/components/card';
 import debounce from 'lodash/debounce';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
     const [mobileno, setMobileNo] = useState('');
@@ -105,7 +107,9 @@ const LoginForm = () => {
                     />
                 </div>
                 <div className="relative z-10 p-10 text-white">
-                    <h1 className="text-4xl font-bold">Welcome to Nimboo</h1>
+                    <h1 className="text-4xl flex justify-center items-center font-black md:text-4xl bg-gradient-to-r from-lime-700 via-cyan-700
+              to-teal-700 hover:from-indigo-700 hover:to-orange-700 
+              text-transparent bg-clip-text ">Welcome to Nimboo</h1>
                     <p className="mt-2 text-xl">Nimbooo&#169; is an Micro & Nano Payments Collection platform that
             enables creators, contributors and publishers to generate QR based
             payment links</p>
@@ -128,8 +132,8 @@ const LoginForm = () => {
                     
                 </div>
                 <div className="absolute top-4 right-4">
-                    <Link href="/" className="text-primary">
-                        Back to Home
+                    <Link href="/" className="text-primary ">
+                    <FontAwesomeIcon icon={faHome} className="text-xl" />
                     </Link>
                 </div>
                 <div className="flex justify-center md:hidden mb-4">
@@ -137,11 +141,11 @@ const LoginForm = () => {
                 </div>
                 
                 <div className="rounded-xl border p-10">
-                    <h1 className="text-2xl text-primary mb-4">Welcome Back</h1>
+                    <h1 className="text-2xl font-bold text-primary mb-4">Welcome Back</h1>
 
                     {message && <p className="text-green-600 mb-4">{message}</p>}
 
-                    <form onSubmit={handleLogin} className="space-y-6">
+                    <form onSubmit={handleLogin} className="">
                         {/* Mobile number input */}
                         <div>
                             <label htmlFor="mobileno" className="block mb-2">
@@ -196,8 +200,8 @@ const LoginForm = () => {
                         )}
                     </form>
 
-                    <Link href="/signup" className="block mt-4 text-center">
-                        Don’t have an account? <span className="text-[rgba(49,200,0,255)]">Sign up</span>
+                    <Link href="/signup" className="block mt-4 text-center text-">
+                        Don’t have an account? <span className="text-primary">Sign up</span>
                     </Link>
                 </div>
             </div>

@@ -32,6 +32,7 @@ export default async function Dashboard() {
 
   const user = await User.findById(userId).exec();
   if (!user) return redirect("/login");
+  console.log('dashboard',user.virtualAccountId)
 
   const avatarUrl =
     user.avtarurl || "https://api.dicebear.com/9.x/pixel-art/svg";

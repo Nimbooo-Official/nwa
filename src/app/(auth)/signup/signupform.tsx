@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import CardComponent from '@/components/card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const SignupForm = () => {
     const [firstName, setFirstName] = useState('');
@@ -74,7 +76,9 @@ const SignupForm = () => {
                     />
                 </div>
                 <div className="relative z-10 p-10 text-white">
-                    <h1 className="text-4xl font-bold">Welcome to Nimboo</h1>
+                    <h1 className="text-4xl flex justify-center items-center font-black md:text-4xl bg-gradient-to-r from-lime-700 via-cyan-700
+              to-teal-700 hover:from-indigo-700 hover:to-orange-700 
+              text-transparent bg-clip-text ">Welcome to Nimboo</h1>
                     <p className="mt-2 text-xl">Nimbooo&#169; is an Micro & Nano Payments Collection platform that
             enables creators, contributors and publishers to generate QR based
             payment links</p>
@@ -97,20 +101,20 @@ const SignupForm = () => {
                 </div>
 
                 <div className="absolute top-4 right-4">
-                    <Link href="/" className="text-primary">
-                        Back to Home
+                <Link href="/" className="text-primary ">
+                    <FontAwesomeIcon icon={faHome} className="text-xl" />
                     </Link>
                 </div>
                 <div className="flex justify-center md:hidden mb-4">
-                <h1 className="text-2xl font-bold text-primary">Welcome to Nimboo</h1>
+                <h1 className=" font-bold text-primary">Welcome to Nimboo</h1>
                 </div>
-                <div className="rounded-xl border p-6 md:p-10">
-                    <h1 className="text-2xl text-primary mb-4">Create your account</h1>
+                <div className="rounded-xl border p-6 md:p-6">
+                    <h1 className=" text-primary font-bold mb-4">Create your account</h1>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-2">
                         {/* First Name */}
                         <div>
-                            <label htmlFor="firstName" className="block mb-2">
+                            <label htmlFor="firstName" className="block mb-2 font-bold">
                                 First Name
                             </label>
                             <input
@@ -149,7 +153,7 @@ const SignupForm = () => {
                                 value={mobileNo}
                                 onChange={(e) => setMobileNo(e.target.value)}
                                 maxLength={10}
-                                required
+        
                                 className={`border p-2 w-full rounded-md ${errors.mobileNo ? 'border-red-600' : ''}`}
                             />
                             {errors.mobileNo && <p className="text-red-600">{errors.mobileNo}</p>}
@@ -180,7 +184,7 @@ const SignupForm = () => {
                                 id="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                required
+                    
                                 className={`border p-2 w-full rounded-md ${errors.password ? 'border-red-600' : ''}`}
                             />
                             {errors.password && <p className="text-red-600">{errors.password}</p>}
@@ -196,7 +200,6 @@ const SignupForm = () => {
                                 id="confirmPassword"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                required
                                 className={`border p-2 w-full rounded-md ${errors.confirmPassword ? 'border-red-600' : ''}`}
                             />
                             {errors.confirmPassword && <p className="text-red-600">{errors.confirmPassword}</p>}

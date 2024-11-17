@@ -41,14 +41,14 @@ export const Features = () => {
           >
             Everything you need to generate payment links
           </p>
-          <p className="mt-6 text-lg/8 text-gray-500">
+          <div className="mt-6 text-lg/8 text-gray-500">
             Signup Onboarding <i>to</i> creating your public profile and
             showcase <i>to</i> adding your bank account <i>to</i> genrating
             payment links.
             <p className="font-[family-name:var(--font-poppins)]">
               <b>All in less than 15 minutes</b>
             </p>
-          </p>
+          </div>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
           <dl

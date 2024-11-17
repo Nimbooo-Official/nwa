@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
   
       return NextResponse.json({
         message: 'KYC record created successfully',
-        username:user.username
+        
         
       }, { status: 201 });
     } catch (error) {

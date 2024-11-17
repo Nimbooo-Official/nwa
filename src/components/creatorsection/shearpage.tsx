@@ -24,7 +24,7 @@ const SharePage: React.FC<SharePageProps> = ({ shareUrl }) => {
 
   // Function to copy the link to the clipboard
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(shareUrl);
+    navigator.clipboard.writeText(`http://localhost:3000/${shareUrl}`);
     alert('Link copied to clipboard!');
   };
 
@@ -41,7 +41,7 @@ const SharePage: React.FC<SharePageProps> = ({ shareUrl }) => {
       {/* Modal Logic */}
       {isShareModalOpen && (
         <div className="fixed inset-0 bg-opacity-60 flex justify-center items-center">
-          <div className="relative bg-white p-8 rounded-xl w-full max-w-md shadow-2xl">
+          <div className="relative bg-background p-8 rounded-xl w-full max-w-md shadow-2xl">
             
             {/* Close Icon */}
             <button 

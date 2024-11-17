@@ -101,7 +101,8 @@ export default function ProfileInfoForm() {
       {/* Cover Image */}
       <div className="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden">
         {coverUrl && (
-          <Image src={coverUrl} alt="Cover Image" layout="fill" objectFit="cover" />
+          <Image src={coverUrl} alt="Cover Image" fill
+          sizes="(max-width: 768px) 50vw, 100vw"  />
         )}
         <div className="absolute top-4 right-4">
           <UploadButton onUplodeComplete={setCoverUrl} />
@@ -110,14 +111,16 @@ export default function ProfileInfoForm() {
       </div>
 
       {/* Avatar Image */}
-      <div className="relative -mt-16 flex justify-center">
+      <div className="relative  flex justify-center">
         <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
           {avatarUrl ? (
-            <Image src={avatarUrl} alt="Avatar" layout="fill" objectFit="cover" />
+            <Image src={avatarUrl} alt="Avatar" fill
+            sizes="(max-width: 768px) 50vw, 100vw" 
+             />
           ) : (
             <div className="w-full h-full bg-gray-200"></div>
           )}
-          <div className="absolute bottom-0 right-0">
+          <div className="absolute bottom-2 right-4">
             <UploadButton onUplodeComplete={setAvatarUrl} />
             <input type="hidden" name="avtarurl" value={avatarUrl || ""} />
           </div>
@@ -125,7 +128,7 @@ export default function ProfileInfoForm() {
       </div>
 
       {/* Form Fields */}
-      <div className="space-y-6 p-4 border-2 border-black rounded-lg">
+      <div className=" p-6  border-2 border-black rounded-lg">
         {/* Username */}
         <div className="p-4">
           <label htmlFor="username" className="block text-sm font-semibold mb-1">

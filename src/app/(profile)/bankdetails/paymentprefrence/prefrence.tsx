@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useKYC } from '@/context/KYCContext';
+import { Button } from '@/components/ui/button';
 
 const Step3 = () => {
   const { formData } = useKYC(); // Access formData to check for Step 1 and Step 2 data
@@ -79,15 +80,10 @@ const Step3 = () => {
       });
 
       if (response.ok) {
-        // Generate payment link (mocked here)
-        const paymentLink = `https://payment.com/link/${Math.random().toString(36).substring(7)}`;
-        console.log('Payment link generated:', paymentLink);
-        
-        const { username } = await response.json(); // Assuming response contains `{ username: string }`
-      console.log('Username from response:', username);
 
-      // Redirect to the user's profile page
-      router.push(`/${username}/dashboard`);
+        router.push('/generateVpa')
+       
+      
       } else {
         console.error('Failed to store data:', await response.json());
         alert('Error storing data, please try again.');
@@ -145,9 +141,9 @@ const Step3 = () => {
           </div>
         )}
 
-        <button type="submit" className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600">
-          Generate Payment Link
-        </button>
+        <Button type="submit" className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600">
+          Copmlite KYC
+        </Button>
       </form>
     </div>
   );

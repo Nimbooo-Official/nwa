@@ -2,6 +2,8 @@
 
 import { uploadToS3 } from "@/app/api/profile/uploadimge"
 import { ChangeEvent } from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCameraRetro} from '@fortawesome/free-solid-svg-icons';
 
 export  default  function  UploadButton({
     onUplodeComplete
@@ -25,7 +27,7 @@ export  default  function  UploadButton({
         <>
         <label className="mt-4 block">
           {/* Border added around the span */}
-          <span className="block px-4 py-2 border-2 border-black rounded-xl w-48">Upload Profile Image</span>
+          <span className="">  <FontAwesomeIcon icon={faCameraRetro} className="text-xl" /></span>
           <input className="hidden" type="file" onChange={ev => upload(ev)} />
         </label>
 

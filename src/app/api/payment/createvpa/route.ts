@@ -1,26 +1,53 @@
+'use server'
 // pages/api/createVirtualAccount.ts
 
 import { NextRequest, NextResponse } from 'next/server';
-import { dbConnect } from "@/lib/dbConnect"; // A utility to connect to MongoDB
-import VirtualAccount from "@/models/virtualaccount";
+import { dbConnect } from "@/lib/dbConnect";
+import User from "@/models/User";
 import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+
+const SECRET_KEY = process.env.JWT_SECRET || 'your_secret_key';
 
 export async function POST(req: NextRequest) {
   try {
     await dbConnect();
 
-    const {
-      uniqueRequestNumber,
-      label,
-      description,
-      virtualAccountNumber,
-      virtualPaymentAddress,
-      autoDeactivateAt,
-      authorizedRemitters,
-      transactionAmountLimit,
-    } = await req.json(); // Parse JSON from request body
+    // Extract the Authorization header
+    const authorizationHeader = req.headers.get('Authorization');
+    if (!authorizationHeader) {
+      return NextResponse.json({ error: "Authorization token is missing" }, { status: 401 });
+    }
 
-    // Construct the SHA-512 hash
+    const token = authorizationHeader.split(" ")[1];
+    if (!token) {
+      return NextResponse.json({ error: "Invalid token format" }, { status: 401 });
+    }
+
+    // Verify the JWT token
+    let userId;
+    try {
+      const decodedToken = jwt.verify(token, SECRET_KEY) as { id: string };
+      userId = decodedToken.id;
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
+    }
+
+    // Fetch the user from the database
+    const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json({ error: "User not found. Please log in again." }, { status: 401 });
+    }
+
+    // Prepare the required fields
+    const { firstName, lastName, mobile } = user;
+    const label = `${firstName} ${lastName}`;
+    const uniqueRequestNumber = user._id.toString();
+
+    const { virtualPaymentAddress } = await req.json(); // Parse the required field from the request body
+
+    // Construct the SHA-512 hash for authorization
     const key = process.env.Merchant_Key;
     const salt = process.env.Merchant_Salt;
     const hashString = `${key}|${label}|${salt}`;
@@ -38,40 +65,30 @@ export async function POST(req: NextRequest) {
         unique_request_number: uniqueRequestNumber,
         key,
         label,
-        description,
-        virtual_account_number: virtualAccountNumber,
         virtual_payment_address: virtualPaymentAddress,
-        auto_deactivate_at: autoDeactivateAt,
-        authorized_remitters: authorizedRemitters,
-        transaction_amount_limit: transactionAmountLimit,
+        mobile,
       }),
     });
 
     const data = await response.json();
 
-    // Check for a successful response from the API
+    // Check for a successful response from the Easebuzz API
     if (!response.ok) {
       return NextResponse.json({ error: data.message || 'Error creating virtual account' }, { status: response.status });
     }
 
-    // Save the data to MongoDB
-    const virtualAccount = new VirtualAccount({
-      uniqueRequestNumber,
-      label,
-      description,
-      virtualAccountNumber,
-      virtualPaymentAddress,
-      autoDeactivateAt,
-      authorizedRemitters,
-      transactionAmountLimit,
-    });
+    console.log("Data from Easebuzz API:", data);
 
-    await virtualAccount.save();
+    // Retrieve and store only the virtualAccountId
+    const { id: virtualAccountId } = data.data.virtual_account;
+
+    user.virtualAccountId = virtualAccountId; // Assuming the User model has a `virtualAccountId` field
+    await user.save();
 
     // Return a success response
-    return NextResponse.json({ message: "Virtual account created successfully", data }, { status: 200 });
+    return NextResponse.json({ message: "Virtual account created successfully", virtualAccountId }, { status: 200 });
   } catch (error) {
-    console.error(error);
+    console.error("Error:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
